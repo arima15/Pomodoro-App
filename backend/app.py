@@ -1,8 +1,6 @@
-from backend import create_app
-from backend.routes import main
+from . import create_app
 
 app = create_app()
-app.register_blueprint(main)
 
 if __name__ == '__main__':
     app.run(debug=True) 
