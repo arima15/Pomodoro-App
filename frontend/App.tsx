@@ -9,17 +9,10 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
+import LoginScreen from './screens/LoginScreen';
 
 // Placeholder screens
-function LoginScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Login Screen</Text>
-    </View>
-  );
-}
-
-function RegisterScreen() {
+function RegisterScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Register Screen</Text>
