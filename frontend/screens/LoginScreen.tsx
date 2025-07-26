@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import axios from 'axios';
 import { API_BASE_URL } from '../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LoginScreen({ navigation }: any) {
   const [username, setUsername] = useState('');
@@ -15,10 +16,10 @@ export default function LoginScreen({ navigation }: any) {
         username,
         password,
       });
-      // Save token (for demo, use Alert; in real app, use AsyncStorage)
       const token = response.data.access_token;
-      Alert.alert('Login Success', 'Token: ' + token);
-      // Navigate to Activities screen
+      // Store token securely
+      await AsyncStorage.setItem('access_token', token);
+      Alert.alert('Login Success', 'You are now logged in.');
       navigation.replace('Activities');
     } catch (error: any) {
       Alert.alert('Login Failed', error?.response?.data?.msg || 'Unknown error');
